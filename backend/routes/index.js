@@ -1,24 +1,23 @@
 'use strict';
 
 const express = require('express');
-const studentCtrl = require('../controllers/student');
-const subjectCtrl = require('../controllers/subject');
+const bikeCtrl = require('../controllers/bike');
+const stationCtrl = require('../controllers/station');
 const api = express.Router();
 
 /**
  * Routes restful API
  */
-api.get('/subjects', subjectCtrl    .getSubjects);
-api.post('/subjects/addstudent', subjectCtrl.postStudentSubject);
-api.post('/subjects', subjectCtrl.postSubject);
-api.get('/subjects/:subjectId', subjectCtrl.getSubjectDetail);
-api.get('/subjects/:subjectId/studentdetail', subjectCtrl.getStudentSubjectDetail);
-api.delete('/subjects/:subjectId', subjectCtrl.deleteSubject);
+api.get('/stations', stationCtrl.getStations);
+api.post('/stations/addbike', stationCtrl.postBikeStation);
+api.post('/stations', stationCtrl.postStation);
+api.get('/stations/:stationId', stationCtrl.getStationDetail);
+api.get('/stations/:stationId/bikedetail', stationCtrl.getBikeStationDetail);
+api.delete('/stations/:stationId', stationCtrl.deleteStation);
 
-api.get('/students', studentCtrl.getStudents);
-api.post('/students', studentCtrl.postStudent);
-api.delete('/students/:studentId', studentCtrl.deleteStudent);
-api.put('/students/:studentId', studentCtrl.updateStudent);
+api.get('/bikes', bikeCtrl.getBikes);
+api.post('/bikes', bikeCtrl.postBike);
+api.delete('/bikes/:bikeId', bikeCtrl.deleteBike);
 
 
 module.exports = api;

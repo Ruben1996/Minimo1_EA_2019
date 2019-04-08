@@ -2,8 +2,8 @@
   "swagger": "2.0",
   "info": {
     "version": "1.0.0",
-    "title": "CRUD of students Minimo1",
-    "description": "CRUD Students",
+    "title": "CRUD Minimo1",
+    "description": "CRUD Stations",
     "license": {
       "name": "MIT",
       "url": "https://opensource.org/licenses/MIT"
@@ -13,10 +13,10 @@
   "basePath": "/",
   "tags": [
     {
-      "name": "Students"
+      "name": "Bikes"
     },
     {
-      "name": "Subjects"
+      "name": "Stations"
     }
   ],
   "schemes": [
@@ -29,19 +29,19 @@
     "application/json"
   ],
   "paths": {
-    "/students": {
+    "/bikes": {
       "post": {
         "tags": [
-          "Students"
+          "Bikes"
         ],
-        "description": "Add new Student",
+        "description": "Add new Bike",
         "parameters": [
           {
-            "name": "Student",
+            "name": "Bike",
             "in": "body",
-            "description": "Student that you want to add",
+            "description": "Bike that you want to add",
             "schema": {
-              "$ref": "#/definitions/Student"
+              "$ref": "#/definitions/Bike"
             }
           }
         ],
@@ -50,7 +50,7 @@
         ],
         "responses": {
           "200": {
-            "description": "User created successfully"
+            "description": "Bike created successfully"
           },
           "500": {
             "description": "Internal server error"
@@ -59,14 +59,14 @@
       },
       "get": {
         "tags": [
-          "Students"
+          "Bikes"
         ],
-        "summary": "Get all students",
+        "summary": "Get all bikes",
         "responses": {
           "200": {
             "description": "OK",
             "schema": {
-              "$ref": "#/definitions/Students"
+              "$ref": "#/definitions/Bikes"
             }
           },
           "500": {
@@ -75,57 +75,27 @@
         }
       }
     },
-    "/students/{studentId}": {
+    "/bikes/{bikeId}": {
       "parameters": [
         {
-          "name": "studentId",
+          "name": "bikeId",
           "in": "path",
           "required": true,
-          "description": "ID of the student",
+          "description": "ID of the bike",
           "type": "string"
         }
       ],
       "delete": {
         "tags": [
-          "Students"
+          "Bikes"
         ],
-        "summary": "Delete Student",
+        "summary": "Delete Bike",
         "responses": {
           "200": {
-            "description": "Student is deleted"
+            "description": "Bike is deleted"
           },
           "404": {
-            "description": "Student not found"
-          },
-          "500": {
-            "description": "Internal server error"
-          }
-        }
-      },
-      "put": {
-        "tags": [
-          "Students"
-        ],
-        "summary": "Update Student",
-        "parameters": [
-          {
-            "name": "Student",
-            "in": "body",
-            "description": "Student with new values",
-            "schema": {
-              "$ref": "#/definitions/Student"
-            }
-          }
-        ],
-        "responses": {
-          "200": {
-            "description": "Student is updated",
-            "schema": {
-              "$ref": "#/definitions/Student"
-            }
-          },
-          "404": {
-            "description": "Student not found"
+            "description": "Bike not found"
           },
           "500": {
             "description": "Internal server error"
@@ -133,19 +103,19 @@
         }
       }
     },
-    "/subjects": {
+    "/stations": {
       "post": {
         "tags": [
-          "Subjects"
+          "Stations"
         ],
-        "description": "Add new Subject",
+        "description": "Add new Station",
         "parameters": [
           {
-            "name": "Subject",
+            "name": "Station",
             "in": "body",
-            "description": "Subject that you want to add",
+            "description": "Station that you want to add",
             "schema": {
-              "$ref": "#/definitions/Subject"
+              "$ref": "#/definitions/Station"
             }
           }
         ],
@@ -154,7 +124,7 @@
         ],
         "responses": {
           "200": {
-            "description": "Subject created successfully"
+            "description": "Station created successfully"
           },
           "500": {
             "description": "Internal server error"
@@ -163,14 +133,14 @@
       },
       "get": {
         "tags": [
-          "Subjects"
+          "Stations"
         ],
-        "summary": "Get all subjects",
+        "summary": "Get all stations",
         "responses": {
           "200": {
             "description": "OK",
             "schema": {
-              "$ref": "#/definitions/Subjects"
+              "$ref": "#/definitions/Stations"
             }
           },
           "500": {
@@ -179,19 +149,19 @@
         }
       }
     },
-    "/subjects/addstudent": {
+    "/stations/addbike": {
       "post": {
         "tags": [
-          "Subjects"
+          "Stations"
         ],
-        "description": "Add student into a subject",
+        "description": "Add bike into a station",
         "parameters": [
           {
             "name": "identifiers",
             "in": "body",
-            "description": "Id of the Student and the Subject",
+            "description": "Id of the Bike and the Station",
             "schema": {
-              "$ref": "#/definitions/AddUserIntoSubject"
+              "$ref": "#/definitions/AddBikeIntoStation"
             }
           }
         ],
@@ -200,7 +170,7 @@
             "description": "Added successfully"
           },
           "404": {
-            "description": "Student or Subject not found"
+            "description": "Bike or Station not found"
           },
           "500": {
             "description": "Internal server error"
@@ -208,30 +178,30 @@
         }
       }
     },
-    "/subjects/{subjectId}": {
+    "/stations/{stationId}": {
       "parameters": [
         {
-          "name": "subjectId",
+          "name": "stationId",
           "in": "path",
           "required": true,
-          "description": "ID of the subject",
+          "description": "ID of the stations",
           "type": "string"
         }
       ],
       "get": {
         "tags": [
-          "Subjects"
+          "Stations"
         ],
-        "summary": "See the subject detail",
+        "summary": "See the station detail",
         "responses": {
           "200": {
             "description": "OK",
             "schema": {
-              "$ref": "#/definitions/SubjectDetail"
+              "$ref": "#/definitions/StationDetail"
             }
           },
           "404": {
-            "description": "Subject not found"
+            "description": "Station not found"
           },
           "500": {
             "description": "Internal server error"
@@ -240,15 +210,15 @@
       },
       "delete": {
         "tags": [
-          "Subjects"
+          "Stations"
         ],
-        "summary": "Delete Subject",
+        "summary": "Delete Station",
         "responses": {
           "200": {
-            "description": "Subject is deleted"
+            "description": "Station is deleted"
           },
           "404": {
-            "description": "Subject not found"
+            "description": "Station not found"
           },
           "500": {
             "description": "Internal server error"
@@ -256,30 +226,30 @@
         }
       }
     },
-    "/subjects/{subjectId}/studentdetail": {
+    "/stations/{stationId}/bikedetail": {
       "parameters": [
         {
-          "name": "subjectId",
+          "name": "stationId",
           "in": "path",
           "required": true,
-          "description": "ID of the subject",
+          "description": "ID of the station",
           "type": "string"
         }
       ],
       "get": {
         "tags": [
-          "Subjects"
+          "Stations"
         ],
-        "summary": "See the student detail of a subject",
+        "summary": "See the bikes detail of a station",
         "responses": {
           "200": {
             "description": "OK",
             "schema": {
-              "$ref": "#/definitions/StudentSubjectDetail"
+              "$ref": "#/definitions/BikeStationDetail"
             }
           },
           "404": {
-            "description": "Subject not found"
+            "description": "Station not found"
           },
           "500": {
             "description": "Internal server error"
@@ -289,73 +259,70 @@
     }
   },
   "definitions": {
-    "Student": {
+    "Bike": {
       "required": [
         "name",
-        "address",
-        "phones"
+        "kms",
+        "description"
       ],
       "properties": {
         "name": {
           "type": "string"
         },
-        "address": {
+        "kms": {
           "type": "string"
         },
-        "phones": {
-          "type": "array",
-          "items": {
-            "type": "object",
-            "properties": {
-              "key": {
-                "type": "string"
-              },
-              "value": {
-                "type": "string"
-              }
-            }
-          }
+        "description": {
+          "type": "string"
         }
       }
     },
-    "Students": {
+    "Bikes": {
       "type": "array",
-      "$ref": "#/definitions/Student"
+      "$ref": "#/definitions/Bike"
     },
-    "Subject": {
+    "Station": {
       "required": [
-        "name"
+        "name",
+        "state",
+        "description"
       ],
       "properties": {
         "name": {
           "type": "string"
+        },
+        "state": {
+          "type": "string"
+        },
+        "description": {
+          "type": "string"
         }
       }
     },
-    "Subjects": {
+    "Stations": {
       "type": "array",
-      "$ref": "#/definitions/Subject"
+      "$ref": "#/definitions/Station"
     },
-    "AddUserIntoSubject": {
+    "AddBikeIntoStation": {
       "required": [
-        "subjectId",
-        "studentId"
+        "bikeId",
+        "stationId"
       ],
       "properties": {
-        "subjectId": {
+        "bikeId": {
           "type": "string"
         },
-        "studentId": {
+        "stationId": {
           "type": "string"
         }
       }
     },
-    "SubjectDetail": {
+    "StationDetail": {
       "properties": {
         "name": {
           "type": "string"
         },
-        "students": {
+        "bikes": {
           "type": "array",
           "items": {
             "properties": {
@@ -367,7 +334,7 @@
         }
       }
     },
-    "StudentSubjectDetail": {
+    "BikeStationDetail": {
       "properties": {
         "name": {
           "type": "string"
@@ -375,7 +342,7 @@
         "students": {
           "type": "array",
           "items": {
-            "$ref": "#/definitions/Student"
+            "$ref": "#/definitions/Bike"
           }
         }
       }
