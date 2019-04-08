@@ -263,7 +263,8 @@
       "required": [
         "name",
         "kms",
-        "description"
+        "description",
+        "available"
       ],
       "properties": {
         "name": {
@@ -274,6 +275,9 @@
         },
         "description": {
           "type": "string"
+        },
+        "available": {
+          "type": "boolean"
         }
       }
     },

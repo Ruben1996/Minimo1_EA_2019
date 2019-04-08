@@ -1,58 +1,8 @@
 # Minimo1
 
-Students and Subjects CRUD using MEAN stack.
+Stations and bikes disponibillity
 
 ---
-
-### Table of Contents
-
-- [Models](#models)
-- [How To Use](#how-to-use)
-- [License](#license)
-- [Author Info](#author-info)
-
-## Models
-
-##### StudentService schema
-
-```javascript
-const StudentSchema = new Schema({
-    name: { type: String, required: true },
-    address: { type: String, required: true },
-    phones: [{
-        key: String,
-        value: String
-    }]
-});
-```
-
-##### SubjectService schema
-
-```javascript
-const SubjectSchema = new Schema ({
-    name: { type: String, required: true, unique: true },
-    students: [{ type: Schema.ObjectId, ref: 'StudentService', unique: false }]
-});
-```
-
-##### Routes
-
-| Model | Type | Routes | Description |
-| :---:| :---: | --- | --- |
-| SUBJECT | GET | /subjects | Get all Subjects |
-|  | GET | /subjects/**:subjectId** | Get the detail of a subject |
-|  | GET | /subjects/**:subjectId**/studentdetail | Get the student detail of a subject |
-|  | POST | /subjects/adduser | Add StudentService into a subject |
-|  | POST | /subjects | Add a new subject |
-|  | DELETE | /subjects/**:subjectId** | Delete SubjectService |
-| STUDENT | GET | /students | Get all Students |
-|  | POST | /students | Add a new student |
-|  | DELETE | /students/**:studentId** | Delete StudentService |
-|  | PUT | /students/**:studentId** | Update StudentService
-
-##### Swagger
-
-![Captura de pantalla 2019-04-05 a las 12 29 23](https://user-images.githubusercontent.com/43316590/55621663-71f76a00-579e-11e9-9153-77ed8ecf39f7.png)
 
 #### Technologies
 
@@ -132,4 +82,4 @@ SOFTWARE.
 
 ## Author Info
 
-Sergi Vera
+Ruben Cobos

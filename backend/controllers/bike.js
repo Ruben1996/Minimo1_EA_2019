@@ -4,17 +4,12 @@ const mongoose = require('mongoose');
 const Station = require('../models/station');
 const Bike = require('../models/bike');
 
-/**
- * Add student from Students collection
- * @param req
- * @param res
- * @returns {Promise<void>}
- */
 async function postBike(req, res) {
     const bike = new Bike();
     bike.name = req.body.name;
     bike.kms = req.body.kms;
     bike.description = req.body.description;
+    bike.available = req.body.available;
     try {
         await bike.save();
         res.status(200).send({message: "BikeService created successfully"})
@@ -25,7 +20,7 @@ async function postBike(req, res) {
 }
 
 /**
- * Delete student from Students collection
+ * Delete student from Bikes collection
  * @param req
  * @param res
  * @returns {Promise<*>}
@@ -48,24 +43,7 @@ async function deleteBike(req, res) {
         res.status(500).send(err);
     }
 }
-/*
-async function updateBike(req, res) {
-    try{
-        const _id = req.params.studentId;
-        let student = await Bike.findByIdAndUpdate(_id, req.body, {runValidators: true});
-        if(!student){
-            return res.status(404).send({message: 'StudentService not found'})
-        }else{
-            res.status(200).send(student)
-        }
-    }catch(err){
-        if (err.name === 'MongoError' && err.code === 11000) {
-            res.status(409).send({err: err.message, code: err.code})
-        }
-        res.status(500).send(err)
-    }
-}
-*/
+
 async function getBikes(req, res) {
     try {
         let bikes = await Bike.find();
@@ -75,12 +53,18 @@ async function getBikes(req, res) {
     }
 }
 
-/**
- * Export the functions to use them anywhere
- * @type {{getStudents: getStudents, updateStudent: updateStudent, postStudent: postStudent, deleteStudent: deleteStudent}}
- */
+async function getAvailableBikes(req, res) {
+    try {
+        let availableBikes = await Bike.find({available: "true"});
+        res.status(200).send(availableBikes);
+    } catch(err) {
+        res.status(500).send(err)
+    }
+}
+
 module.exports = {
     postBike,
     deleteBike,
-    getBikes
+    getBikes,
+    getAvailableBikes
 };

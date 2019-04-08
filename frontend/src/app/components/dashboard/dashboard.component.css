@@ -4,8 +4,11 @@
   padding-bottom: 25px;
 }
 
-input {
+table {
+  width: auto;
   text-align: center;
+  margin-left: auto;
+  margin-right: auto;
 }
 
 th {
@@ -21,25 +24,7 @@ h2 {
   margin-bottom: 10px;
 }
 
-i.icon-blue {
-  color: blue;
-}
-
-i.icon-red {
-  color: red;
-}
-
 .add {
   position: relative;
   text-align: center;
 }
-
-#addBike {
-  margin-left: 300px;
-}
-
-#addStation {
-  margin-left: 120px;
-}
-
-

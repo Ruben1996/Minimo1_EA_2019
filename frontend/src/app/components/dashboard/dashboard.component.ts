@@ -24,32 +24,18 @@ export class DashboardComponent implements OnInit {
 
   constructor(private bikeService: BikeService, private router: Router,
               private stationService: StationService) {
-    this.singleStation = new Station();
   }
 
 
 
   ngOnInit() {
     this.getStations();
-    this.getBikes();
   }
   deleteStation(id: string, i: number) {
     if (confirm('Are yo sure you want to delete it?')) {
       this.stationService.deleteStation(id)
         .subscribe(res => {
             this.stations.splice(i, 1);
-          },
-          err => {
-            console.log(err);
-          });
-    }
-  }
-
-  deleteBike(id: string, i: number) {
-    if (confirm('Are yo sure you want to delete it?')) {
-      this.bikeService.deleteBike(id)
-        .subscribe(res => {
-            this.bikes.splice(i, 1);
           },
           err => {
             console.log(err);
@@ -89,7 +75,7 @@ export class DashboardComponent implements OnInit {
     this.stationService.getBikeStationDetail(id)
       .subscribe( res => {
           console.log(res);
-          this.router.navigate(['/bikelist', id]);
+          this.router.navigate(['/bikeslist', id]);
         },
         err => {
           console.log(err);
@@ -106,7 +92,7 @@ export class DashboardComponent implements OnInit {
       bikeId: id
     };
     console.log(this.body);
-    this.stationService.postBikeStation(this.body)
+    this.stationService.postBiketotheStation(this.body)
       .subscribe( res => {
           console.log(res);
           confirm('Added successfully');

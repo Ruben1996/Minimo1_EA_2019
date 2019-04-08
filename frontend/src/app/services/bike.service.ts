@@ -18,11 +18,7 @@ export class BikeService {
     return this.http.get(this.environment.urlBike);
   }
 
-  postBike(bike: Bike) {
-    return this.http.post(this.environment.urlBike, bike);
-  }
-
-  deleteBike(id: string) {
-    return this.http.delete(this.environment.urlBike + `/${id}`);
+  getavailableBikes(){
+    return this.http.get(this.environment.urlBike + '/available');
   }
 }

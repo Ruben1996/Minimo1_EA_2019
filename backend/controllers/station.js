@@ -68,6 +68,8 @@ async function postBikeStation(req, res) {
             if (!stationUpdated) {
                 return res.status(404).send({message: 'StationService not found'})
             }
+            let bikeUpdated = await Bike.findByIdAndUpdate({_id: bikeId}, {available: "false"});
+            console.log(bikeUpdated);
         }
         res.status(200).send({message: "BikeService added successfully to the station"})
     } catch(err) {
@@ -87,9 +89,6 @@ async function postBikeStation(req, res) {
 async function getBikeStationDetail(req, res) {
     try {
         const _id = req.params.stationId;
-
-        //We use populate to return the detail of every student
-        //Populates automatically find every student that has the specified ID, instead of doing by us
         let station = await Station.findById(_id).populate('bikes');
         if(!station){
             return res.status(404).send({message: 'StationService not found'})
@@ -101,15 +100,25 @@ async function getBikeStationDetail(req, res) {
     }
 }
 
-async function deleteStation(req, res) {
+async function deleteBiketotheStation(req, res) {
     try{
-        const _id = req.params.stationId;
+        const stationId = req.params.stationId;
+        const bikeId = req.params.bikeId;
+
         let station = await Station.findByIdAndRemove(_id);
         if(!station){
             return res.status(404).send({message: 'StationService not found'})
         }else{
-            res.status(200).send({message:'StationService deleted successfully'})
+            mongoose.Types.ObjectId(bikeId);
+            let stationUpdated = await Station.update({_id: stationId}, {$pull: {bikes: bikeId}});
+            if (stationUpdated.nModified === 0) {
+                return res.status(404).send({message: 'Bike not found'})
+            }
+            let bikeUpdated = await Bike.findByIdAndUpdate({_id: bikeId}, {available: "true"});
+            Console.log(bikeUpdated);
+
         }
+        res.status(200).send({message:'Bike deleted successfully'})
     }catch(err){
         res.status(500).send(err)
     }
@@ -125,5 +134,5 @@ module.exports = {
     getStationDetail,
     postBikeStation,
     getBikeStationDetail,
-    deleteStation
+    deleteBiketotheStation
 };

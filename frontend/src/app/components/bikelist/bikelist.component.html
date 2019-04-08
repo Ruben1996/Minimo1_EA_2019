@@ -1,3 +1,47 @@
-<p>
-  bikelist works!
-</p>
+<div class="container">
+  <div class="row">
+    <div class="col">
+        <h3 class="title">{{bikeStationDetail.name}}: Current Bikes</h3>
+        <table class="table table-bordered table-hover">
+          <thead class="thead-dark">
+          <th scope="col">Bike</th>
+          <th scope="col">Kms</th>
+          <th scope="col">Description</th>
+          <th scope="col"></th>
+          </thead>
+          <tbody>
+          <tr *ngFor="let bike of bikeStationDetail.bikes; let i=index">
+            <td>{{bike.name}}</td>
+            <td>{{bike.kms}}</td>
+            <td>{{bike.description}}</td>
+            <td>
+              <button class="btn btn-danger" type="button" (click)="deleteBiketotheStation(bike._id, i)">Delete</button>
+            </td>
+          </tr>
+          </tbody>
+        </table>
+    </div>
+
+    <div class="col">
+      <h3 class="title">More Bikes</h3>
+      <table class="table table-bordered table-hover">
+        <thead class="thead-dark">
+        <th scope="col">Bike</th>
+        <th scope="col">Kms</th>
+        <th scope="col">Description</th>
+        <th scope="col"></th>
+        </thead>
+        <tbody>
+        <tr *ngFor="let bike of availableBikes; let i=index">
+          <td>{{bike.name}}</td>
+          <td>{{bike.kms}}</td>
+          <td>{{bike.description}}</td>
+          <td>
+            <button class="btn btn-success" type="button" (click)="addBiketotheStation(bike._id, i)">Add</button>
+          </td>
+        </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>

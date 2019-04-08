@@ -33,8 +33,11 @@ export class StationService {
     return this.http.post(this.environment.urlStation, station);
   }
 
-  postBikeStation(ids: object) {
+  postBiketotheStation(ids: object) {
     return this.http.post(this.environment.urlStation + '/addbike', ids);
+  }
+  deleteBiketotheStation(stationId: string, bikeId: string) {
+    return this.http.delete(this.environment.urlStation + `/${stationId}` + '/deletebike' + `/${bikeId}`);
   }
 
   deleteStation(id: string) {
