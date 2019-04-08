@@ -1,3 +1,115 @@
-<p>
-  dashboard works!
-</p>
+<h3 class="title">Stations</h3>
+
+<div class="container">
+  <div class="row">
+    <div class="col">
+      <!--Subject Table-->
+      <table class="table table-bordered table-hover">
+        <thead class="thead-dark">
+        <th scope="col"></th>
+        <th scope="col">Station Name</th>
+        <th scope="col">State</th>
+        <th scope="col">Description</th>
+        </thead>
+        <tbody>
+        <tr *ngFor="let station of stations; let i=index">
+          <td>
+            <input type="checkbox" class="form-check-input" (click)="assignStationId(station._id)">
+          </td>
+          <td>{{station.name}}</td>
+          <td>{{station.state}}</td>
+          <td>{{station.description}}</td>
+          <td>
+            <a (click)="bikeStationDetail(station._id)">
+              <i class="material-icons icon-blue">info</i>
+            </a>
+            <a (click)="deleteStation(station._id, i)">
+              <i class="material-icons icon-red">delete</i>
+            </a>
+          </td>
+        </tr>
+        </tbody>
+      </table>
+      <button class="btn btn-primary" type="button" id="addSubject" data-toggle="modal" data-target="#newSubject">Add new Subject</button>
+    </div>
+
+
+      <!--Student Table-->
+    <!--
+    <div class="col">
+      <table class="table table-bordered table-hover">
+        <thead class="thead-dark">
+        <th scope="col">Name</th>
+        <th scope="col">Kms</th>
+        <th colspan="4">description</th>
+        <th scope="col">Operations</th>
+        </thead>
+        <tbody>
+        <tr *ngFor="let bike of bikes; let i=index">
+          <td>{{bike.name}}</td>
+          <td>{{bike.kms}}</td>
+          <td>{{bike.description}}</td>
+          <td>
+            <a (click)="addBikeStation(bike._id)">
+              <i class="material-icons icon-blue">add_circle</i>
+            </a>
+            <a (click)="deleteBike(bike._id, i)">
+              <i class="material-icons icon-red">delete</i>
+            </a>
+          </td>
+        </tr>
+        </tbody>
+      </table>
+      <button class="btn btn-primary" type="button" (click)="addNewStudent()" id="addStudent">Add new Student</button>
+    </div>
+  </div>
+</div>
+-->
+<!-- Modal Add Subject-->
+<!--
+<div class="modal fade" id="newSubject" tabindex="-1" role="dialog" aria-labelledby="subjectLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="subjectLabel">New Subject</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <div class="example-container">
+          <input type="text" id="subjectName" placeholder="Subject Name" required [(ngModel)]="subjectName"/>
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-primary" (click)="addNewSubject()">Save changes</button>
+      </div>
+    </div>
+  </div>
+</div>
+-->
+
+<!-- Modal See Enrolled Students-->
+<!--
+<div class="modal fade" id="seeEnrolled" tabindex="-1" role="dialog" aria-labelledby="studentLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="studentLabel">Enrolled Students</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <div *ngFor="let student of singleSubject.students">
+          <label>{{student.name}}</label>
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+      </div>
+    </div>
+  </div>
+</div>
+-->

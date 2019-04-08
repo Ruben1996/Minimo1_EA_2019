@@ -17,11 +17,13 @@ import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { DashboardComponent } from './components/dashboard/dashboard.component';
+import { BikelistComponent } from './components/bikelist/bikelist.component';
 
 @NgModule({
   declarations: [
     AppComponent,
-    DashboardComponent
+    DashboardComponent,
+    BikelistComponent
   ],
   imports: [
     BrowserModule,
@@ -41,7 +43,6 @@ import { DashboardComponent } from './components/dashboard/dashboard.component';
     MatTableModule,
     MatProgressSpinnerModule
   ],
-  providers: [],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
