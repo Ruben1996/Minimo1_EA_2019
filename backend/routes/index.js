@@ -13,7 +13,7 @@ api.post('/stations/addbike', stationCtrl.postBikeStation);
 api.post('/stations', stationCtrl.postStation);
 api.get('/stations/:stationId', stationCtrl.getStationDetail);
 api.get('/stations/:stationId/bikedetail', stationCtrl.getBikeStationDetail);
-api.delete('/stations/:stationId/deletebike/:bikeId', stationCtrl.deleteBiketotheStation);
+api.delete('/stations/:stationId/:bikeId', stationCtrl.deleteBiketotheStation);
 
 api.get('/bikes', bikeCtrl.getBikes);
 api.get('/bikes/available', bikeCtrl.getAvailableBikes);

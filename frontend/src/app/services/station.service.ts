@@ -37,7 +37,7 @@ export class StationService {
     return this.http.post(this.environment.urlStation + '/addbike', ids);
   }
   deleteBiketotheStation(stationId: string, bikeId: string) {
-    return this.http.delete(this.environment.urlStation + `/${stationId}` + '/deletebike' + `/${bikeId}`);
+    return this.http.delete(this.environment.urlStation + `/${stationId}` + `/${bikeId}`);
   }
 
   deleteStation(id: string) {
