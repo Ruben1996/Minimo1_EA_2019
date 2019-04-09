@@ -64,8 +64,8 @@ export class BikelistComponent implements OnInit {
         });
   }
 
-async deleteBiketotheStation(id: string, i: number) {
-  await this.stationService.deleteBiketotheStation(this.bikeStationDetail._id, id)
+  async deleteBiketotheStation(id: string, i: number) {
+    await this.stationService.deleteBiketotheStation(this.bikeStationDetail._id, id)
       .subscribe(res => {
           console.log(res);
           this.bikeStationDetail.bikes.splice(i, 1);
@@ -73,8 +73,7 @@ async deleteBiketotheStation(id: string, i: number) {
         },
         err => {
           console.log(err);
-        });
+      });
 
   }
-
 }

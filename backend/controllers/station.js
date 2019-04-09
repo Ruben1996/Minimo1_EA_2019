@@ -1,7 +1,5 @@
 'use strict';
 
-import * as mongoose from "mongoose";
-
 const Station = require('../models/station');
 const Bike = require('../models/bike');
 
@@ -58,9 +56,6 @@ async function postBikeStation(req, res) {
     try{
         const stationId = req.body.stationId;
         const bikeId = req.body.bikeId;
-
-        console.log(`StationID: ${stationId}, BikeID: ${bikeId}`);
-
         let bikeFound = await Bike.findById(bikeId);
 
         if (!bikeFound) {
@@ -103,6 +98,7 @@ async function getBikeStationDetail(req, res) {
 }
 
 async function deleteBiketotheStation(req, res) {
+
     try{
         const stationId = req.params.stationId;
         const bikeId = req.params.bikeId;
@@ -112,8 +108,7 @@ async function deleteBiketotheStation(req, res) {
         if(!station){
             return res.status(404).send({message: 'StationService not found'})
         }else{
-            mongoose.Types.ObjectId(bikeId);
-            console.log(bikeId);
+            console.log('hasta aqui');
             let stationUpdated = await Station.update({_id: stationId}, {$pull: {bikes: bikeId}});
             if (stationUpdated.nModified === 0) {
                 return res.status(404).send({message: 'Bike not found'})
@@ -126,6 +121,8 @@ async function deleteBiketotheStation(req, res) {
     }catch(err){
         res.status(500).send(err)
     }
+
+
 }
 
 /**
